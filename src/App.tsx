@@ -1,5 +1,7 @@
+import Router from './shared/Router';
+
 const App = () => {
-  return <div className='text-yellow-400'>hello</div>;
+  return <Router />;
 };
 
 export default App;
