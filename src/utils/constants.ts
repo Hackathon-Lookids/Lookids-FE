@@ -5,7 +5,7 @@ export const PATH_URL = {
     FAMILY: '/look/family'
   },
   TREND: '/trend',
-  NEARBY: '/neerby',
+  NEARBY: '/nearby',
   STUDIO: {
     MAIN: '/studio',
     RENT: '/studio/rent',
