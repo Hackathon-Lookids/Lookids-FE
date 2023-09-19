@@ -13,3 +13,14 @@ export const PATH_URL = {
   },
   DONATE: '/donate'
 };
+
+export const TABS = {
+  LOOKTABS: [
+    { label: '키즈룩', path: PATH_URL.LOOK.KIDS },
+    { label: '패밀리룩', path: PATH_URL.LOOK.FAMILY }
+  ],
+  STUDIOTABS: [
+    { label: '스튜디오', path: PATH_URL.STUDIO.RENT },
+    { label: '키즈모델', path: PATH_URL.STUDIO.MODEL }
+  ]
+};

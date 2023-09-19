@@ -7,7 +7,7 @@ import NavIcon from './NavIcon';
 const Nav = () => {
   return (
     <div className='h-16 px-5 flex justify-between bg-[#222]'>
-      <NavIcon label='룩' path='/look'>
+      <NavIcon label='룩' path='/look/kids'>
         <IoGlasses />
       </NavIcon>
       <NavIcon label='트렌드' path='/trend'>
@@ -16,7 +16,7 @@ const Nav = () => {
       <NavIcon label='내주변' path='/nearby'>
         <IoIosPin />
       </NavIcon>
-      <NavIcon label='스튜디오' path='/studio'>
+      <NavIcon label='스튜디오' path='/studio/rent'>
         <GiFilmProjector />
       </NavIcon>
       <NavIcon label='나눔' path='/donate'>

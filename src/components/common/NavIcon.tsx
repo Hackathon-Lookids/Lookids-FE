@@ -1,14 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 
-const NavIcon = ({
-  children,
-  label,
-  path
-}: {
+interface INavProps {
   children: React.ReactNode;
   label: string;
   path: string;
-}) => {
+}
+
+const NavIcon: React.FC<INavProps> = ({ children, label, path }: INavProps) => {
   const navigate = useNavigate();
 
   return (
