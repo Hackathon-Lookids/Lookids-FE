@@ -9,6 +9,7 @@ import {
   StudioRentPage,
   TrendPage
 } from '../pages';
+import DonatePage from '../pages/DonatePage';
 
 const Router = () => {
   return (
@@ -22,7 +23,7 @@ const Router = () => {
           <Route path={PATH_URL.NEARBY} element={<NearByPage />} />
           <Route path={PATH_URL.STUDIO.MODEL} element={<StudioModelPage />} />
           <Route path={PATH_URL.STUDIO.RENT} element={<StudioRentPage />} />
-          <Route path={PATH_URL.DONATE} />
+          <Route path={PATH_URL.DONATE} element={<DonatePage />} />
         </Route>
       </Routes>
     </BrowserRouter>
