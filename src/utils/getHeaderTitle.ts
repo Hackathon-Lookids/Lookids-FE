@@ -1,9 +1,8 @@
 import { PATH_URL } from './constants';
 
-export const headerTitle = (path: string) => {
+export const getHeaderTitle = (path: string) => {
   switch (path) {
     case '/':
-    case PATH_URL.LOOK.MAIN:
     case PATH_URL.LOOK.KIDS:
     case PATH_URL.LOOK.FAMILY:
       return 'LOOK';
@@ -11,7 +10,6 @@ export const headerTitle = (path: string) => {
       return 'TREND';
     case PATH_URL.NEARBY:
       return 'NEARBY';
-    case PATH_URL.STUDIO.MAIN:
     case PATH_URL.STUDIO.RENT:
     case PATH_URL.STUDIO.MODEL:
       return 'STUDIO';

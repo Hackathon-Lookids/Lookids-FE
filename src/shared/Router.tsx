@@ -4,10 +4,8 @@ import {
   LayoutPage,
   LookFamilyPage,
   LookKidsPage,
-  LookPage,
   NearByPage,
   StudioModelPage,
-  StudioPage,
   StudioRentPage,
   TrendPage
 } from '../pages';
@@ -17,17 +15,13 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<LayoutPage />}>
-          <Route path='/' element={<LookPage />} />
-          <Route path={PATH_URL.LOOK.MAIN} element={<LookPage />}>
-            <Route path={PATH_URL.LOOK.KIDS} element={<LookKidsPage />} />
-            <Route path={PATH_URL.LOOK.FAMILY} element={<LookFamilyPage />} />
-          </Route>
+          <Route path='/' element={<LookKidsPage />} />
+          <Route path={PATH_URL.LOOK.KIDS} element={<LookKidsPage />} />
+          <Route path={PATH_URL.LOOK.FAMILY} element={<LookFamilyPage />} />
           <Route path={PATH_URL.TREND} element={<TrendPage />} />
           <Route path={PATH_URL.NEARBY} element={<NearByPage />} />
-          <Route path={PATH_URL.STUDIO.MAIN} element={<StudioPage />}>
-            <Route path={PATH_URL.STUDIO.MODEL} element={<StudioModelPage />} />
-            <Route path={PATH_URL.STUDIO.RENT} element={<StudioRentPage />} />
-          </Route>
+          <Route path={PATH_URL.STUDIO.MODEL} element={<StudioModelPage />} />
+          <Route path={PATH_URL.STUDIO.RENT} element={<StudioRentPage />} />
           <Route path={PATH_URL.DONATE} />
         </Route>
       </Routes>

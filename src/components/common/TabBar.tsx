@@ -6,13 +6,13 @@ export interface ITabType {
 }
 
 interface ITabProps {
-  tabs: ITabType[];
+  tabs: ITabType[] | undefined;
 }
 
 const TabBar: React.FC<ITabProps> = ({ tabs }: ITabProps) => {
   return (
     <div className='flex'>
-      {tabs.map((tab, idx) => (
+      {tabs?.map((tab, idx) => (
         <Tab key={idx} label={tab.label} path={tab.path} />
       ))}
     </div>
