@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { ItabType } from './TabBar';
+import { ITabType } from './TabBar';
 
-const Tab: React.FC<ItabType> = ({ label, path }: ItabType) => {
+const Tab: React.FC<ITabType> = ({ label, path }: ITabType) => {
   const location = useLocation();
   const navigate = useNavigate();
 

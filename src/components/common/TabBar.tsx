@@ -1,12 +1,12 @@
 import Tab from './Tab';
 
-export interface ItabType {
+export interface ITabType {
   label: string;
   path: string;
 }
 
 interface ITabProps {
-  tabs: ItabType[];
+  tabs: ITabType[];
 }
 
 const TabBar: React.FC<ITabProps> = ({ tabs }: ITabProps) => {
