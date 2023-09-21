@@ -1,7 +1,9 @@
-import { getMostPopularLook } from '../apis/lookApi';
+import { getMostPopularKidsLook } from '../apis/lookApi';
 import { useQuery } from 'react-query';
+import MostPopular from '../components/MostPopular';
+import LookPosts from '../components/LookPosts';
 
-interface IMostPopularData {
+export interface IMostPopularData {
   id: number;
   title: string;
   location: string;
@@ -11,11 +13,14 @@ interface IMostPopularData {
 const LookKidsPage = () => {
   const { data } = useQuery<IMostPopularData[]>(
     ['mostPopular'],
-    getMostPopularLook
+    getMostPopularKidsLook
   );
 
   return (
-    <div>{data?.map((post, idx) => <div key={idx}>{post.title}</div>)}</div>
+    <>
+      <MostPopular data={data} title='오늘의 키즈룩' />
+      <LookPosts data={data} />
+    </>
   );
 };
 
