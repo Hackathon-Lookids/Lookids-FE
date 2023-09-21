@@ -15,8 +15,6 @@ const MostPopular: React.FC<IMostPopularProps> = ({
   const displaySlide = 3;
   const slideLength = data ? Math.ceil(data.length / displaySlide) : 0;
   const [currentPage, setCurrentPage] = useState<number>(0);
-
-  // PC 슬라이드 드래그 이벤트
   const [startPoint, setStartPoint] = useState<number>(0);
 
   const handleDragStart = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -54,10 +52,9 @@ const MostPopular: React.FC<IMostPopularProps> = ({
         onMouseUp={handleDragEnd}
       >
         <div
-          className={`w-[${
-            slideLength * 100
-          }%] flex justify-start transition duration-500`}
+          className={'flex justify-start transition duration-500'}
           style={{
+            width: `${slideLength * 100}%`,
             transform: `translateX(-${currentPage * (100 / slideLength)}%)`
           }}
         >
