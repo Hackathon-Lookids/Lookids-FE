@@ -12,12 +12,12 @@ const LayoutPage = () => {
     <div className='h-screen flex-all-center'>
       <div className='w-[376px] h-[668px] border border-gray-300 flex flex-col justify-between rounded-md shadow-md overflow-hidden'>
         <Header />
-        <div className='w-full h-full'>
-          {!(
-            location.pathname === PATH_URL.TREND ||
-            location.pathname === PATH_URL.NEARBY ||
-            location.pathname === PATH_URL.DONATE
-          ) && <TabBar tabs={getTabs(location.pathname)} />}
+        {!(
+          location.pathname === PATH_URL.TREND ||
+          location.pathname === PATH_URL.NEARBY ||
+          location.pathname === PATH_URL.DONATE
+        ) && <TabBar tabs={getTabs(location.pathname)} />}
+        <div className='w-full h-[524px] overflow-y-auto'>
           <Outlet />
         </div>
         <Nav />
