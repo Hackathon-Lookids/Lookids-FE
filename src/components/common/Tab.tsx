@@ -11,7 +11,7 @@ const Tab: React.FC<ITabType> = ({ label, path }: ITabType) => {
       className={`w-1/2 h-12 font-semibold font-notoSansKr ${
         (location.pathname === path ||
           (location.pathname === '/' && path === PATH_URL.LOOK.KIDS)) &&
-        'border-b-2 border-black'
+        'font-extrabold border-b-2 border-black'
       }`}
       onClick={() => navigate(path)}
     >

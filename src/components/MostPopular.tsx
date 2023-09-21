@@ -45,7 +45,7 @@ const MostPopular: React.FC<IMostPopularProps> = ({
 
   return (
     <div className='w-full overflow-hidden px-2'>
-      <h3 className='font-semibold px-2 pt-1 pb-2'>{title}</h3>
+      <h3 className='font-semibold px-2 py-2'>{title}</h3>
       <div
         className='w-full overflow-hidden'
         onMouseDown={handleDragStart}

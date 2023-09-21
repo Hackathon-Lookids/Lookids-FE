@@ -8,7 +8,7 @@ export interface ILookPostsProps {
 const LookPosts: React.FC<ILookPostsProps> = ({ data }: ILookPostsProps) => {
   const navigator = useNavigate();
   return (
-    <div className='grid-gap2 px-2 py-4 shadow-sm'>
+    <div className='grid-gap2 px-3 py-4 shadow-sm'>
       {data?.map((post) => (
         <div
           key={post.id}
