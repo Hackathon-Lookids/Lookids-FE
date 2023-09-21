@@ -1,3 +1,4 @@
+import React from 'react';
 import { getMostPopularFamilyLook } from '../apis/lookApi';
 import { useQuery } from 'react-query';
 import MostPopular from '../components/MostPopular';

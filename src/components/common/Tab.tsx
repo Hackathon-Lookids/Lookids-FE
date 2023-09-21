@@ -1,3 +1,4 @@
+import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ITabType } from './TabBar';
 import { PATH_URL } from '../../utils/constants';

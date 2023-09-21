@@ -1,3 +1,4 @@
+import React from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
 import Header from '../components/common/Header';
 import Nav from '../components/common/Nav';
@@ -5,7 +6,7 @@ import TabBar from '../components/common/TabBar';
 import { PATH_URL } from '../utils/constants';
 import { getTabs } from '../utils/getTab';
 
-const LayoutPage = () => {
+const LayoutPage: React.FC = () => {
   const location = useLocation();
 
   return (

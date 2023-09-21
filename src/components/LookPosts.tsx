@@ -1,3 +1,4 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IMostPopularData } from '../pages/LookKidsPage';
 
@@ -7,6 +8,7 @@ export interface ILookPostsProps {
 
 const LookPosts: React.FC<ILookPostsProps> = ({ data }: ILookPostsProps) => {
   const navigator = useNavigate();
+
   return (
     <div className='grid-gap2 px-3 py-4 shadow-sm'>
       {data?.map((post) => (

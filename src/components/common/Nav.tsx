@@ -1,3 +1,4 @@
+import React from 'react';
 import { IoGlasses, IoLogoYoutube } from 'react-icons/io5';
 import { IoIosPin } from 'react-icons/io';
 import { GiFilmProjector } from 'react-icons/gi';
