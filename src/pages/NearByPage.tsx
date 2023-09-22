@@ -48,7 +48,7 @@ const locations = [
   }
 ];
 
-interface IlocationData {
+interface ILocationData {
   id: number;
   type: string;
   latitude: number;
@@ -62,7 +62,7 @@ interface IlocationData {
 const NearByPage: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const [isPlaceOpen, setIsPlaceOpen] = useState<boolean>(false);
-  const [placeInfo, setPlaceInfo] = useState<IlocationData>();
+  const [placeInfo, setPlaceInfo] = useState<ILocationData>();
 
   const handlePlaceToggle = () => setIsPlaceOpen(!isPlaceOpen);
 
@@ -156,7 +156,7 @@ const NearByPage: React.FC = () => {
                   placeInfo?.type === 'free' ? 'bg-[#05A33A]' : 'bg-[#FF9E0D]'
                 }`}
               >
-                {placeInfo?.type === 'free' ? '무료나눔' : '내 근처'}
+                {placeInfo?.type === 'free' ? '무료나눔' : '중고 거래'}
               </span>
               {placeInfo?.title}
             </h4>

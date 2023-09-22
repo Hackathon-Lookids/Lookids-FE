@@ -63,7 +63,7 @@ const MostPopular: React.FC<IMostPopularProps> = ({
               key={post.id}
               className='w-[105px] h-[100px] mx-2 rounded-md bg-slate-400 shadow-sm object-cover cursor-pointer'
               style={{ background: `url(${post.location}) 50% /cover` }}
-              onClick={() => navigator('/')}
+              onClick={() => navigator('/look/kids')}
             />
           ))}
         </div>

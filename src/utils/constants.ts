@@ -1,3 +1,12 @@
+export const {
+  REACT_APP_SERVER,
+  REACT_APP_NAVER_MAP_CLIENT_ID,
+  REACT_APP_KAKAKO_REST_API_KEY,
+  REACT_APP_KAKAO_REDIRECT_URI
+} = process.env;
+
+export const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REACT_APP_KAKAKO_REST_API_KEY}&redirect_uri=${REACT_APP_KAKAO_REDIRECT_URI}`;
+
 export const PATH_URL = {
   LOOK: {
     KIDS: '/look/kids',
@@ -9,7 +18,9 @@ export const PATH_URL = {
     RENT: '/studio/rent',
     MODEL: '/studio/model'
   },
-  DONATE: '/donate'
+  DONATE: '/donate',
+  LOGIN: '/login',
+  KAKAO: '/oauth/kakao'
 };
 
 export const TABS = {

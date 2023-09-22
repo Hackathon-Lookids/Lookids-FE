@@ -16,7 +16,7 @@ const LookPosts: React.FC<ILookPostsProps> = ({ data }: ILookPostsProps) => {
           key={post.id}
           className='w-[100%] h-[246px] mb-0.5 rounded-md shadow-sm object-cover cursor-pointer'
           style={{ background: `url(${post.location}) 50% /cover` }}
-          onClick={() => navigator('/')}
+          onClick={() => navigator('/look/kids')}
         />
       ))}
     </div>
