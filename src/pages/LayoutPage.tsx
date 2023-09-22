@@ -11,13 +11,14 @@ const LayoutPage: React.FC = () => {
 
   return (
     <div className='h-screen flex-all-center'>
-      <div className='w-[376px] h-[668px] border border-gray-300 flex flex-col justify-between rounded-md shadow-md overflow-hidden'>
+      <div className='w-full h-full sm:w-[376px] sm:h-[668px] sm:border border-gray-300 flex flex-col justify-between rounded-md shadow-md overflow-hidden'>
         <Header />
-        {!(
-          location.pathname === PATH_URL.TREND ||
-          location.pathname === PATH_URL.NEARBY ||
-          location.pathname === PATH_URL.DONATE
-        ) && <TabBar tabs={getTabs(location.pathname)} />}
+        {(location.pathname === PATH_URL.LOOK.KIDS ||
+          location.pathname === PATH_URL.LOOK.FAMILY ||
+          location.pathname === PATH_URL.STUDIO.RENT ||
+          location.pathname === PATH_URL.STUDIO.MODEL) && (
+          <TabBar tabs={getTabs(location.pathname)} />
+        )}
         <div className='w-full h-[524px] overflow-y-auto'>
           <Outlet />
         </div>
