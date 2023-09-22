@@ -1,5 +1,7 @@
+import React from 'react';
+
 const StudioRentPage = () => {
-  return <div>StudioRentPage</div>;
+  return <div></div>;
 };
 
 export default StudioRentPage;

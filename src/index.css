@@ -29,3 +29,8 @@
 .grid-gap2 {
   @apply grid grid-cols-2 grid-rows-2 grid-flow-row gap-3;
 }
+
+/* text-overflow */
+.text-overflow {
+  @apply overflow-hidden overflow-ellipsis whitespace-nowrap;
+}

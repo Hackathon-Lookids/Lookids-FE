@@ -1,3 +1,4 @@
+import React from 'react';
 import { getMostPopularKidsLook } from '../apis/lookApi';
 import { useQuery } from 'react-query';
 import MostPopular from '../components/MostPopular';
@@ -10,7 +11,7 @@ export interface IMostPopularData {
   price: string;
 }
 
-const LookKidsPage = () => {
+const LookKidsPage: React.FC = () => {
   const { data } = useQuery<IMostPopularData[]>(
     ['mostPopular'],
     getMostPopularKidsLook
