@@ -1,4 +1,4 @@
-import { TABS } from '../utils/constants';
+import { PATH_URL, TABS } from '../utils/constants';
 import { IProps } from './common/Header';
 import { IoArrowBack } from 'react-icons/io5';
 import { CiImageOff } from 'react-icons/ci';
@@ -7,24 +7,40 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { useMutation } from 'react-query';
+import { addLookPost } from '../apis/lookApi';
+import { useLocation } from 'react-router-dom';
+import PostModalRadioBtn from './common/PostModalRadioBtn';
 
 interface IValues {
-  lookType: string;
+  type: string;
   title: string;
   content: string;
 }
 
 const PostModal: React.FC<IProps> = ({ onClick }: IProps) => {
+  const location = useLocation();
   const [previewImgSrc, setPreviewImgSrc] = useState<string[]>([]);
+  const [files, setFiles] = useState<File[]>([]);
   const [values, setValues] = useState<IValues>({
-    lookType: '',
+    type: '',
     title: '',
     content: ''
+  });
+
+  const addPostMutation = useMutation(addLookPost, {
+    onSuccess: (response) => {
+      console.log('success====> ', response);
+    },
+    onError: (error) => {
+      console.log('error====> ', error);
+    }
   });
 
   const onChangeFileHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const imgList = e.target.files;
     let imgUrlList: string[] = [...previewImgSrc];
+    const imgFiles: File[] = [...files];
 
     if (!imgList) {
       return;
@@ -32,7 +48,9 @@ const PostModal: React.FC<IProps> = ({ onClick }: IProps) => {
 
     for (let i = 0; i < imgList.length; i++) {
       const currentImgUrl = URL.createObjectURL(imgList[i]);
+      const currentImgFile = imgList[i];
       imgUrlList.push(currentImgUrl);
+      imgFiles.push(currentImgFile);
     }
 
     if (imgUrlList.length > 3) {
@@ -41,6 +59,7 @@ const PostModal: React.FC<IProps> = ({ onClick }: IProps) => {
     }
 
     setPreviewImgSrc(imgUrlList);
+    setFiles(imgFiles);
   };
 
   const onChangeValueHandler = (
@@ -48,10 +67,32 @@ const PostModal: React.FC<IProps> = ({ onClick }: IProps) => {
   ) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
+    console.log('?? ??', name, value);
   };
 
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const data = {
+      lookType: values.type,
+      title: values.title,
+      content: values.content
+    };
+
+    const formData = new FormData();
+    const dataString = JSON.stringify(data);
+    formData.append(
+      'look',
+      new Blob([dataString], { type: 'application/json' })
+    );
+
+    files.forEach((file) => {
+      console.log('dfla ', file);
+      const fileBlob = new Blob([JSON.stringify(file)], { type: file.type });
+      formData.append('imageFile', fileBlob, file.name);
+    });
+
+    addPostMutation.mutate(formData);
   };
 
   return (
@@ -59,38 +100,42 @@ const PostModal: React.FC<IProps> = ({ onClick }: IProps) => {
       <div className='w-[376px] h-[668px] rounded-md p-5 flex flex-col justify-between'>
         <button onClick={onClick} className='w-7 h-7 text-lg'>
           <IoArrowBack />
-          {values.lookType}
-          {values.title}
-          {values.content}
         </button>
 
         <form
           className='h-[95%] flex flex-col justify-between'
           onSubmit={onSubmitHandler}
         >
-          <div className='w-1/2 flex justify-between'>
-            {TABS.LOOKTABS.map((radio, idx) => {
-              return (
-                <div key={idx}>
-                  <input
-                    className=' cursor-pointer mr-2'
-                    type='radio'
-                    name='lookType'
-                    id={radio.id}
-                    onChange={onChangeValueHandler}
-                    value={radio.id}
-                  />
-                  <label
-                    className='cursor-pointer text-sm '
-                    htmlFor={radio.id}
-                    id={radio.id}
-                  >
-                    {radio.label}
-                  </label>
-                </div>
-              );
-            })}
-          </div>
+          {(location.pathname === PATH_URL.LOOK.KIDS && (
+            <PostModalRadioBtn
+              onChange={onChangeValueHandler}
+              TYPETABS={TABS.LOOKTABS}
+            />
+          )) ||
+            (location.pathname === PATH_URL.LOOK.FAMILY && (
+              <PostModalRadioBtn
+                onChange={onChangeValueHandler}
+                TYPETABS={TABS.LOOKTABS}
+              />
+            )) ||
+            (location.pathname === PATH_URL.NEARBY && (
+              <PostModalRadioBtn
+                onChange={onChangeValueHandler}
+                TYPETABS={TABS.NEARBYTABS}
+              />
+            )) ||
+            (location.pathname === PATH_URL.STUDIO.MODEL && (
+              <PostModalRadioBtn
+                onChange={onChangeValueHandler}
+                TYPETABS={TABS.STUDIOTABS}
+              />
+            )) ||
+            (location.pathname === PATH_URL.STUDIO.RENT && (
+              <PostModalRadioBtn
+                onChange={onChangeValueHandler}
+                TYPETABS={TABS.STUDIOTABS}
+              />
+            ))}
 
           <div className='flex justify-end'>
             <input
