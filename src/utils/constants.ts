@@ -14,11 +14,11 @@ export const PATH_URL = {
 
 export const TABS = {
   LOOKTABS: [
-    { label: '키즈룩', path: PATH_URL.LOOK.KIDS },
-    { label: '패밀리룩', path: PATH_URL.LOOK.FAMILY }
+    { id: 'KIDS', label: '키즈룩', path: PATH_URL.LOOK.KIDS },
+    { id: 'FAMILY', label: '패밀리룩', path: PATH_URL.LOOK.FAMILY }
   ],
   STUDIOTABS: [
-    { label: '스튜디오', path: PATH_URL.STUDIO.RENT },
-    { label: '키즈모델', path: PATH_URL.STUDIO.MODEL }
+    { id: 'RENT', label: '스튜디오', path: PATH_URL.STUDIO.RENT },
+    { id: 'MODEL', label: '키즈모델', path: PATH_URL.STUDIO.MODEL }
   ]
 };

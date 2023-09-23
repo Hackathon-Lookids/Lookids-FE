@@ -6,6 +6,36 @@
   font-family: 'Noto Sans KR', sans-serif;
 }
 
+input {
+  background-image: none;
+  background-color: transparent;
+  box-shadow: none;
+  outline: none;
+}
+
+textarea {
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+}
+
+.mySwiper {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+}
+
+.mySwiper img {
+  width: 100%;
+  height: 16rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
 /* flex-all-center */
 .flex-all-center {
   @apply flex justify-center items-center;
