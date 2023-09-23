@@ -1,8 +1,8 @@
 import React from 'react';
-import { getMostPopularKidsLook } from '../apis/lookApi';
-import { useQuery } from 'react-query';
-import MostPopular from '../components/MostPopular';
-import LookPosts from '../components/LookPosts';
+// import { getKidsLookPosts } from '../apis/lookApi';
+// import { useQuery } from 'react-query';
+// import MostPopular from '../components/MostPopular';
+// import LookPosts from '../components/LookPosts';
 
 export interface IMostPopularData {
   id: number;
@@ -12,15 +12,15 @@ export interface IMostPopularData {
 }
 
 const LookKidsPage: React.FC = () => {
-  const { data } = useQuery<IMostPopularData[]>(
-    ['mostPopular'],
-    getMostPopularKidsLook
-  );
+  // const { data } = useQuery<IMostPopularData[]>(
+  //   ['mostPopular'],
+  //   getKidsLookPosts
+  // );
 
   return (
     <>
-      <MostPopular data={data} title='오늘의 키즈룩' />
-      <LookPosts data={data} />
+      {/* <MostPopular data={data?.mostLikedLooks} title='오늘의 키즈룩' />
+      <LookPosts data={data?.randomLooks.content} /> */}
     </>
   );
 };
