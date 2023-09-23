@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IMostPopularData } from '../pages/LookKidsPage';
+import { ILookPostsData } from './LookPosts';
 
-interface IMostPopularProps {
-  data: IMostPopularData[] | undefined;
+export interface IMostPopularProps {
+  data: ILookPostsData[];
   title: string;
 }
 
 const MostPopular: React.FC<IMostPopularProps> = ({
-  data,
+  data: mostPopularData,
   title
 }: IMostPopularProps) => {
   const navigator = useNavigate();
   const displaySlide = 3;
-  const slideLength = data ? Math.ceil(data.length / displaySlide) : 0;
+  const slideLength = mostPopularData
+    ? Math.ceil(mostPopularData.length / displaySlide)
+    : 0;
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [startPoint, setStartPoint] = useState<number>(0);
 
@@ -58,11 +60,11 @@ const MostPopular: React.FC<IMostPopularProps> = ({
             transform: `translateX(-${currentPage * (100 / slideLength)}%)`
           }}
         >
-          {data?.map((post) => (
+          {mostPopularData?.map((post, idx) => (
             <div
-              key={post.id}
+              key={idx}
               className='w-[105px] h-[100px] mx-2 rounded-md bg-slate-400 shadow-sm object-cover cursor-pointer'
-              style={{ background: `url(${post.location}) 50% /cover` }}
+              style={{ background: `url(${post.imageUrls[idx]}) 50% /cover` }}
               onClick={() => navigator('/look/kids')}
             />
           ))}

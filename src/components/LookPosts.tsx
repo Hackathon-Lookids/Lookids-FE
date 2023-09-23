@@ -1,21 +1,36 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IMostPopularData } from '../pages/LookKidsPage';
 
-export interface ILookPostsProps {
-  data: IMostPopularData[] | undefined;
+export interface IImages {
+  imageUrls: string;
 }
 
-const LookPosts: React.FC<ILookPostsProps> = ({ data }: ILookPostsProps) => {
+export interface ILookPostsData {
+  lookType: string;
+  imageUrls: string[];
+  title: string;
+  content: string;
+  nickname: string;
+  likeCount: 0;
+  likeStatus: true;
+}
+
+export interface ILookPostsProps {
+  data: ILookPostsData[];
+}
+
+const LookPosts: React.FC<ILookPostsProps> = ({
+  data: lookPostsData
+}: ILookPostsProps) => {
   const navigator = useNavigate();
 
   return (
     <div className='grid-gap2 px-3 py-4 shadow-sm'>
-      {data?.map((post) => (
+      {lookPostsData?.map((post, idx) => (
         <div
-          key={post.id}
+          key={idx}
           className='w-[100%] h-[246px] mb-0.5 rounded-md shadow-sm object-cover cursor-pointer'
-          style={{ background: `url(${post.location}) 50% /cover` }}
+          style={{ background: `url(${post.imageUrls[idx]}) 50% /cover` }}
           onClick={() => navigator('/look/kids')}
         />
       ))}

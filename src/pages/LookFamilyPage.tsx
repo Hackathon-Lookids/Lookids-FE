@@ -1,20 +1,16 @@
 import React from 'react';
-import { getMostPopularFamilyLook } from '../apis/lookApi';
+import { getLookPosts } from '../apis/postsApi';
 import { useQuery } from 'react-query';
 import MostPopular from '../components/MostPopular';
 import LookPosts from '../components/LookPosts';
-import { IMostPopularData } from './LookKidsPage';
 
 const LookFamilyPage: React.FC = () => {
-  const { data } = useQuery<IMostPopularData[]>(
-    ['mostPopular'],
-    getMostPopularFamilyLook
-  );
+  const { data } = useQuery(['lookFamilyPosts'], () => getLookPosts('FAMILY'));
 
   return (
     <>
-      <MostPopular data={data} title='오늘의 패밀리룩' />
-      <LookPosts data={data} />
+      <MostPopular data={data?.data.mostLikedLooks} title='오늘의 패밀리룩' />
+      <LookPosts data={data?.data.randomLooks?.content} />
     </>
   );
 };

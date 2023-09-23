@@ -1,68 +1,85 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { TbCurrencyWon } from 'react-icons/tb';
+import { useQuery } from 'react-query';
+import { getNearbyPosts } from '../apis/postsApi';
 
-const locations = [
-  {
-    id: 1,
-    type: 'free',
-    latitude: 37.018009,
-    longitude: 127.108566,
-    title: '당근입니다.',
-    description:
-      '당근사세요당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요당근사세요당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요',
-    price: '10,000,000',
-    image: 'https://src.hidoc.co.kr/image/lib/2021/9/3/1630652987056_0.jpg'
-  },
-  {
-    id: 2,
-    type: 'free',
-    latitude: 37.02009,
-    longitude: 127.4808876,
-    title: '제목입니다.',
-    description:
-      '당근사세요당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요당근사세요당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요',
-    price: '10,000,000',
-    image: 'https://src.hidoc.co.kr/image/lib/2021/9/3/1630652987056_0.jpg'
-  },
-  {
-    id: 3,
-    type: 'nearby',
-    latitude: 37.3180094,
-    longitude: 127.8808776,
-    title: '제목입니다.',
-    description:
-      '당근사세요당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요당근사세요당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요',
-    price: '10,000,000',
-    image: 'https://src.hidoc.co.kr/image/lib/2021/9/3/1630652987056_0.jpg'
-  },
-  {
-    id: 4,
-    type: 'nearby',
-    latitude: 37.1180093,
-    longitude: 127.2808576,
-    title: '제목입니다.',
-    description:
-      '당근사세요당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요당근사세요당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요',
-    price: '10,000,000',
-    image: 'https://src.hidoc.co.kr/image/lib/2021/9/3/1630652987056_0.jpg'
-  }
-];
+// const locations = [
+//   {
+//     id: 1,
+//     type: 'free',
+//     latitude: 37.018009,
+//     longitude: 127.108566,
+//     title: '당근입니다.',
+//     description:
+//       '당근사세요당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요당근사세요당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요',
+//     price: '10,000,000',
+//     image: 'https://src.hidoc.co.kr/image/lib/2021/9/3/1630652987056_0.jpg'
+//   },
+//   {
+//     id: 2,
+//     type: 'free',
+//     latitude: 37.02009,
+//     longitude: 127.4808876,
+//     title: '제목입니다.',
+//     description:
+//       '당근사세요당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요당근사세요당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요',
+//     price: '10,000,000',
+//     image: 'https://src.hidoc.co.kr/image/lib/2021/9/3/1630652987056_0.jpg'
+//   },
+//   {
+//     id: 3,
+//     type: 'nearby',
+//     latitude: 37.3180094,
+//     longitude: 127.8808776,
+//     title: '제목입니다.',
+//     description:
+//       '당근사세요당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요당근사세요당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요',
+//     price: '10,000,000',
+//     image: 'https://src.hidoc.co.kr/image/lib/2021/9/3/1630652987056_0.jpg'
+//   },
+//   {
+//     id: 4,
+//     type: 'nearby',
+//     latitude: 37.1180093,
+//     longitude: 127.2808576,
+//     title: '제목입니다.',
+//     description:
+//       '당근사세요당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요당근사세요당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요.당근사세요',
+//     price: '10,000,000',
+//     image: 'https://src.hidoc.co.kr/image/lib/2021/9/3/1630652987056_0.jpg'
+//   }
+// ];
 
-interface ILocationData {
-  id: number;
-  type: string;
-  latitude: number;
-  longitude: number;
+// interface ILocationData {
+//   id: number;
+//   type: string;
+//   latitude: number;
+//   longitude: number;
+//   title: string;
+//   description: string;
+//   price: string;
+//   image: string;
+// }
+
+interface INearbyData {
+  postType: string;
+  imageUrls: [string];
   title: string;
-  description: string;
+  content: string;
+  nickname: string;
+  location: string;
   price: string;
-  image: string;
 }
 
 const NearByPage: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const [isPlaceOpen, setIsPlaceOpen] = useState<boolean>(false);
-  const [placeInfo, setPlaceInfo] = useState<ILocationData>();
+  const [placeInfo, setPlaceInfo] = useState<INearbyData>();
+
+  const { data: nearbyData } = useQuery<INearbyData[] | undefined>(
+    ['nearbyPosts'],
+    getNearbyPosts
+  );
 
   const handlePlaceToggle = () => setIsPlaceOpen(!isPlaceOpen);
 
@@ -83,8 +100,8 @@ const NearByPage: React.FC = () => {
         const map = new naver.maps.Map(mapRef.current, mapOptions);
         // 내 위치 마커
         const myLocation = './img/myLocation.png';
-        const nearbyLocation = './img/nearbyLocation.png';
-        const freeLocation = './img/freeLocation.png';
+        const tradeLocation = './img/tradeLocation.png';
+        const giveawayLocation = './img/giveawayLocation.png';
 
         new naver.maps.Marker({
           position: new naver.maps.LatLng(latitude, longitude),
@@ -96,15 +113,22 @@ const NearByPage: React.FC = () => {
 
         // 주변 위치 마커 표시
         const markers: naver.maps.Marker[] = [];
-        locations.map((loc) => {
+        nearbyData?.map((loc) => {
+          const { location } = loc;
+          const sliceIdx = location.indexOf('/');
+          const lat = Number(location.slice(0, sliceIdx));
+          const lng = Number(location.slice(sliceIdx + 1, location.length - 1));
+
           const marker = new naver.maps.Marker({
-            position: new naver.maps.LatLng(loc.latitude, loc.longitude),
+            position: new naver.maps.LatLng(lat, lng),
             map,
             icon: {
               content:
-                loc.type === 'free'
-                  ? '<img src="' + freeLocation + '" width="32" height="32">'
-                  : '<img src="' + nearbyLocation + '" width="32" height="32">'
+                loc.postType === 'GIVEAWAY'
+                  ? '<img src="' +
+                    giveawayLocation +
+                    '" width="32" height="32">'
+                  : '<img src="' + tradeLocation + '" width="32" height="32">'
             }
           });
 
@@ -118,8 +142,14 @@ const NearByPage: React.FC = () => {
           const lat = position.lat();
           const lng = position.lng();
 
-          locations.forEach((loc) => {
-            if (loc.latitude === lat && loc.longitude === lng) {
+          nearbyData?.forEach((loc) => {
+            const { location } = loc;
+            const sliceIdx = location.indexOf('/');
+            const nearbyLat = Number(location.slice(0, sliceIdx));
+            const nearbyLng = Number(
+              location.slice(sliceIdx + 1, location.length - 1)
+            );
+            if (nearbyLat === lat && nearbyLng === lng) {
               return setPlaceInfo(loc);
             }
           });
@@ -148,20 +178,22 @@ const NearByPage: React.FC = () => {
           >
             <div
               className='w-full h-40 rounded-lg'
-              style={{ background: `url(${placeInfo?.image}) 50% /cover` }}
+              style={{ background: `url(${placeInfo?.imageUrls}) 50% /cover` }}
             />
             <h4 className='h-9 font-semibold mt-2 text-overflow flex items-center'>
               <span
                 className={`w-auto font-light text-xs p-1 mr-3 text-white rounded-sm ${
-                  placeInfo?.type === 'free' ? 'bg-[#05A33A]' : 'bg-[#FF9E0D]'
+                  placeInfo?.postType === 'free'
+                    ? 'bg-[#05A33A]'
+                    : 'bg-[#FF9E0D]'
                 }`}
               >
-                {placeInfo?.type === 'free' ? '무료나눔' : '중고 거래'}
+                {placeInfo?.postType === 'free' ? '무료나눔' : '중고 거래'}
               </span>
               {placeInfo?.title}
             </h4>
             <p className='h-8 text-xs my-1 overflow-hidden'>
-              {placeInfo?.description}
+              {placeInfo?.content}
             </p>
             <span className='font-semibold text-sm text-orange-600 flex items-center'>
               <TbCurrencyWon />
