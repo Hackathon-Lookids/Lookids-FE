@@ -19,16 +19,3 @@ export const getNearbyPosts = async () => {
     throw err;
   }
 };
-export const addLookPost = async (newData: FormData) => {
-  try {
-    const { data } = await instance.post('/api/looks', newData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    });
-    return data;
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-};
