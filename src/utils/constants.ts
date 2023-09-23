@@ -23,10 +23,26 @@ export const PATH_URL = {
   KAKAO: '/api/users/kakao/callback'
 };
 
-export const TABS = {
+type TabItem = {
+  id: string;
+  label: string;
+  path: string;
+};
+
+type TabsType = {
+  LOOKTABS: TabItem[];
+  NEARBYTABS: TabItem[];
+  STUDIOTABS: TabItem[];
+};
+
+export const TABS: TabsType = {
   LOOKTABS: [
     { id: 'KIDS', label: '키즈룩', path: PATH_URL.LOOK.KIDS },
     { id: 'FAMILY', label: '패밀리룩', path: PATH_URL.LOOK.FAMILY }
+  ],
+  NEARBYTABS: [
+    { id: 'GIVEAWAY', label: '무료 나눔', path: PATH_URL.NEARBY },
+    { id: 'TRADE', label: '중고 거래', path: PATH_URL.NEARBY }
   ],
   STUDIOTABS: [
     { id: 'RENT', label: '스튜디오', path: PATH_URL.STUDIO.RENT },
