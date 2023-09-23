@@ -36,7 +36,31 @@ textarea {
   border-radius: 0.5rem;
 }
 
-/* flex-all-center */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  height: auto;
+  background: rgb(177, 177, 177);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(194, 131, 223, 0.1);
+}
+
+/* flex*/
 .flex-all-center {
   @apply flex justify-center items-center;
+}
+
+/* grid */
+.grid-gap2 {
+  @apply grid grid-cols-2 grid-rows-2 grid-flow-row gap-3;
+}
+
+/* text-overflow */
+.text-overflow {
+  @apply overflow-hidden overflow-ellipsis whitespace-nowrap;
 }

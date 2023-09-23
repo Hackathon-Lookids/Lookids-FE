@@ -5,6 +5,9 @@ import NearByPage from '../pages/NearByPage';
 import StudioModelPage from '../pages/StudioModelPage';
 import StudioRentPage from '../pages/StudioRentPage';
 import LayoutPage from '../pages/LayoutPage';
+import LoginPage from './LoginPage';
+import DonatePage from './DonatePage';
+import KakaoRedirect from './KakaoRedirect';
 
 export {
   LookKidsPage,
@@ -13,5 +16,8 @@ export {
   NearByPage,
   StudioModelPage,
   StudioRentPage,
-  LayoutPage
+  LayoutPage,
+  LoginPage,
+  DonatePage,
+  KakaoRedirect
 };

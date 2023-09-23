@@ -1,21 +1,27 @@
-import { getMostPopularLook } from '../apis/lookApi';
-import { useQuery } from 'react-query';
+import React from 'react';
+// import { getKidsLookPosts } from '../apis/lookApi';
+// import { useQuery } from 'react-query';
+// import MostPopular from '../components/MostPopular';
+// import LookPosts from '../components/LookPosts';
 
-interface IMostPopularData {
+export interface IMostPopularData {
   id: number;
   title: string;
   location: string;
   price: string;
 }
 
-const LookKidsPage = () => {
-  const { data } = useQuery<IMostPopularData[]>(
-    ['mostPopular'],
-    getMostPopularLook
-  );
+const LookKidsPage: React.FC = () => {
+  // const { data } = useQuery<IMostPopularData[]>(
+  //   ['mostPopular'],
+  //   getKidsLookPosts
+  // );
 
   return (
-    <div>{data?.map((post, idx) => <div key={idx}>{post.title}</div>)}</div>
+    <>
+      {/* <MostPopular data={data?.mostLikedLooks} title='오늘의 키즈룩' />
+      <LookPosts data={data?.randomLooks.content} /> */}
+    </>
   );
 };
 
