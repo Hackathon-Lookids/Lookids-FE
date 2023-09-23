@@ -20,7 +20,7 @@ export const PATH_URL = {
   },
   DONATE: '/donate',
   LOGIN: '/login',
-  KAKAO: '/oauth/kakao'
+  KAKAO: '/api/users/kakao/callback'
 };
 
 export const TABS = {

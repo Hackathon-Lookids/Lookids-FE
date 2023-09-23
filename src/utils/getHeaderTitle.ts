@@ -18,7 +18,5 @@ export const getHeaderTitle = (path: string) => {
       return 'STUDIO';
     case PATH_URL.DONATE:
       return 'DONATE';
-    default:
-      console.log(`${path}는 지정되지 않은 경로 입니다.`);
   }
 };
