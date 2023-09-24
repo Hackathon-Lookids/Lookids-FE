@@ -29,8 +29,10 @@ const LookPosts: React.FC<ILookPostsProps> = ({
       {lookPostsData?.map((post, idx) => (
         <div
           key={idx}
-          className='w-[100%] h-[246px] mb-0.5 rounded-md shadow-sm object-cover cursor-pointer'
-          style={{ background: `url(${post.imageUrls[idx]}) 50% /cover` }}
+          className='w-[100%] h-[246px] mb-0.5 rounded-md shadow-sm object-cover cursor-pointer border'
+          style={{
+            background: `no-repeat center/100% url(${post.imageUrls[idx]})`
+          }}
           onClick={() => navigator('/look/kids')}
         />
       ))}

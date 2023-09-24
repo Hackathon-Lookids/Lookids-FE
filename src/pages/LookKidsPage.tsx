@@ -1,5 +1,5 @@
 import React from 'react';
-import { getLookPosts } from '../apis/postsApi';
+import { getLookPosts } from '../apis/postsApis';
 import { useQuery } from 'react-query';
 import MostPopular from '../components/MostPopular';
 import LookPosts from '../components/LookPosts';
