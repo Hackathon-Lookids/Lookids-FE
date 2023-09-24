@@ -17,7 +17,7 @@ const LayoutPage: React.FC = () => {
 
   return (
     <div className='h-screen flex-all-center'>
-      <div className='w-full h-full sm:w-[376px] sm:h-[668px] sm:border border-gray-300 flex flex-col justify-between rounded-md shadow-md overflow-hidden'>
+      <div className='w-full h-full sm:w-[376px] sm:h-[668px] sm:border border-gray-300 flex flex-col justify-between sm:rounded-md shadow-md overflow-hidden'>
         {isPostModalOpen && <PostModal onClick={postModalOpenHandler} />}
         <Header onClick={postModalOpenHandler} />
         {(location.pathname === PATH_URL.LOOK.KIDS ||

@@ -63,8 +63,10 @@ const MostPopular: React.FC<IMostPopularProps> = ({
           {mostPopularData?.map((post, idx) => (
             <div
               key={idx}
-              className='w-[105px] h-[100px] mx-2 rounded-md bg-slate-400 shadow-sm object-cover cursor-pointer'
-              style={{ background: `url(${post.imageUrls[idx]}) 50% /cover` }}
+              className='w-[105px] h-[100px] mx-2 rounded-md bg-slate-400 shadow-sm object-cover cursor-pointer border'
+              style={{
+                background: `no-repeat center/100% url(${post.imageUrls[idx]})`
+              }}
               onClick={() => navigator('/look/kids')}
             />
           ))}
