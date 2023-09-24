@@ -8,7 +8,7 @@ import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useMutation } from 'react-query';
-import { addLookPost } from '../apis/lookApi';
+import { addLookPost } from '../apis/postsApis';
 import { useLocation } from 'react-router-dom';
 import PostModalRadioBtn from './common/PostModalRadioBtn';
 
@@ -89,7 +89,7 @@ const PostModal: React.FC<IProps> = ({ onClick }: IProps) => {
     files.forEach((file) => {
       console.log('dfla ', file);
       const fileBlob = new Blob([JSON.stringify(file)], { type: file.type });
-      formData.append('imageFile', fileBlob, file.name);
+      formData.append('imageFile', fileBlob);
     });
 
     addPostMutation.mutate(formData);

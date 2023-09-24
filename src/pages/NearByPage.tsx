@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { TbCurrencyWon } from 'react-icons/tb';
 import { useQuery } from 'react-query';
-import { getNearbyPosts } from '../apis/postsApi';
+import { getNearbyPosts } from '../apis/postsApis';
 
 // const locations = [
 //   {
