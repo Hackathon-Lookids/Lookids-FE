@@ -3,13 +3,13 @@ import axios from 'axios';
 export const instance = axios.create({ baseURL: process.env.REACT_APP_SERVER });
 
 instance.interceptors.request.use((res) => {
-  //   console.log('res요청 객체:', res);
-  // if (res.headers === undefined) return res;
-  // const accessToken = localStorage.getItem('accessToken');
-
-  // if (accessToken) {
-  //   res.headers.authorization = accessToken;
-  // }
+  if (res.headers === undefined) return res;
+  if (res.url === '/api/looks') {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      res.headers.authorization = accessToken;
+    }
+  }
   return res;
 });
 
