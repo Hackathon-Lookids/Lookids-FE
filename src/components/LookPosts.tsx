@@ -31,7 +31,7 @@ const LookPosts: React.FC<ILookPostsProps> = ({
           key={idx}
           className='w-[100%] h-[246px] mb-0.5 rounded-md shadow-sm object-cover cursor-pointer border'
           style={{
-            background: `no-repeat center/100% url(${post.imageUrls[idx]})`
+            background: `no-repeat center/100% url(${post.imageUrls[0]})`
           }}
           onClick={() => navigator('/look/kids')}
         />

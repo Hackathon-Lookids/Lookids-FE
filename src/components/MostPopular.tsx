@@ -65,7 +65,7 @@ const MostPopular: React.FC<IMostPopularProps> = ({
               key={idx}
               className='w-[105px] h-[100px] mx-2 rounded-md bg-slate-400 shadow-sm object-cover cursor-pointer border'
               style={{
-                background: `no-repeat center/100% url(${post.imageUrls[idx]})`
+                background: `no-repeat center/100% url(${post.imageUrls[0]})`
               }}
               onClick={() => navigator('/look/kids')}
             />

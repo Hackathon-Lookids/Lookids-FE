@@ -67,7 +67,6 @@ const PostModal: React.FC<IProps> = ({ onClick }: IProps) => {
   ) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
-    console.log('?? ??', name, value);
   };
 
   const onSubmitHandler = (e: React.FormEvent) => {
